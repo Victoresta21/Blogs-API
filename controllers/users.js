@@ -1,4 +1,4 @@
-const { createUser } = require('../services/user');
+const { createUser, getAllUsers } = require('../services/user');
 
 const create = async (req, res, next) => {
   try {
@@ -9,6 +9,16 @@ const create = async (req, res, next) => {
   }
 };
 
+const getAll = async (_req, res, next) => {
+  try {
+    const { code, body } = await getAllUsers();
+    return res.status(code).json(body);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   create,
+  getAll,
 };

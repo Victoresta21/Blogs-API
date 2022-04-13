@@ -1,5 +1,6 @@
 const express = require('express');
 const user = require('./routers/user');
+const login = require('./routers/login');
 const error = require('./middlewares/error');
 
 require('dotenv').config();
@@ -16,5 +17,6 @@ app.get('/', (request, response) => {
 
 app.use(express.json());
 app.use('/user', user);
+app.use('/login', login);
 
 app.use(error);

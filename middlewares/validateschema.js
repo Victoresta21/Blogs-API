@@ -1,7 +1,7 @@
-const schema = require('./Joischema');
+const { userSchema, loginSchema } = require('./Joischema');
 
-const checks = async (data) => {
-  const result = schema.validate(data);
+const userChecks = async (data) => {
+  const result = userSchema.validate(data);
   if ('error' in result) {
     const { message } = result.error.details[0];
     return { code: 400, body: { message } };
@@ -9,4 +9,16 @@ const checks = async (data) => {
   return null;
 };
 
-module.exports = checks;
+const loginChecks = async (data) => {
+  const result = loginSchema.validate(data);
+  if ('error' in result) {
+    const { message } = result.error.details[0];
+    return { code: 400, body: { message } };
+  }
+  return null;
+};
+
+module.exports = {
+  userChecks,
+  loginChecks,
+};

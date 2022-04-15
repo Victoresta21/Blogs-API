@@ -2,6 +2,7 @@ const express = require('express');
 const user = require('./routers/user');
 const login = require('./routers/login');
 const categories = require('./routers/categories');
+const post = require('./routers/post');
 const error = require('./middlewares/error');
 
 require('dotenv').config();
@@ -20,5 +21,6 @@ app.use(express.json());
 app.use('/user', user);
 app.use('/login', login);
 app.use('/categories', categories);
+app.use('/post', post);
 
 app.use(error);

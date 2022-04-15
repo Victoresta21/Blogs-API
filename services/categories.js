@@ -12,6 +12,19 @@ const createCategory = async (newCategory) => {
   }
 };
 
+const getAllCategories = async () => {
+  try {
+    const getAll = await Categories.findAll();
+    return {
+      code: 200,
+      body: getAll,
+    };
+  } catch (e) {
+    return { code: 500, body: { message: 'Something went wrong' } };
+  }
+};
+
 module.exports = {
   createCategory,
+  getAllCategories,
 };

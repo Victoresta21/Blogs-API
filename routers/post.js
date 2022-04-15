@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const JWTauth = require('../middlewares/JWTauth');
 const validatePost = require('../middlewares/validatePost');
-const { create } = require('../controllers/post');
+const { create, getAll } = require('../controllers/post');
 
 router.post('/', JWTauth, validatePost, create);
+router.get('/', JWTauth, getAll);
 
 module.exports = router;
